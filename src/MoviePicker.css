@@ -1,0 +1,11 @@
+/* MoviePicker.css */
+.MoviePicker {
+    margin-bottom: 20px;
+  }
+  
+  select {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  

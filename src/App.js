@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import MoviePicker from './MoviePicker';
+import MovieList from './MovieList';
 import './App.css';
 
 function App() {
+
+  const [selectedMovies, setSelectedMovies] = useState([]);
+  
+  const addToSelectedMovies = (movie) => {
+    setSelectedMovies([...selectedMovies, movie]);
+  };
+
+  const removeFromSelectedMovies = (movie) => {
+    setSelectedMovies(selectedMovies.filter(item => item !== movie));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Lista de Compra de Películas</h1>
+      <MoviePicker onAdd={addToSelectedMovies} selectedMovies={selectedMovies} />
+      <MovieList movies={selectedMovies} onRemove={removeFromSelectedMovies} />
     </div>
   );
 }
